@@ -21,7 +21,7 @@ const ProblemSection = () => {
   const problems = [
     {
       title: "The 15-Person Cliff",
-      desc: "What worked when you were a tribe of 5 breaks when you hit 15, and creates absolute chaos at 50. You can't run a village with family rules.",
+      desc: "What worked when you were a tribe of 5-15 breaks down as you stretch to 50 and can be chaos as you reach 100+. You can't run a village with family rules.",
       icon: <Users className="w-6 h-6 text-destructive" />,
     },
     {
@@ -44,7 +44,7 @@ const ProblemSection = () => {
             Why Most Team Building Fails: The "Monday Effect"
           </h2>
           <p className="text-lg text-muted-foreground">
-            You spend the budget on a massive "Culture Day." Everyone high-fives. It
+            You spend the budget on a massive Team Building Event. Everyone high-fives. It
             feels inspiring. Then comes Monday. The energy is gone, and everyone goes
             back to the exact same behaviors.
           </p>
