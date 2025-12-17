@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Sparkles } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import logoFull from '@/assets/logo-full.png';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -24,8 +25,8 @@ const Navbar = () => {
 
   const navItems = [
     { label: 'The Framework', id: 'framework' },
-    { label: 'The Assessment', id: 'assessment' },
     { label: 'Results', id: 'results' },
+    { label: 'The Assessment', id: 'assessment' },
     { label: 'About', id: 'about' },
   ];
 
@@ -43,12 +44,11 @@ const Navbar = () => {
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="flex items-center gap-2 group"
         >
-          <div className="w-9 h-9 bg-accent rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
-            <Sparkles className="w-5 h-5 text-accent-foreground" />
-          </div>
-          <span className="text-xl font-bold tracking-tight text-foreground">
-            DREAMSCOPE
-          </span>
+          <img 
+            src={logoFull} 
+            alt="Dreamscope" 
+            className="h-8 object-contain"
+          />
         </button>
 
         {/* Desktop Menu */}
