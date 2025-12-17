@@ -1,10 +1,12 @@
+import joeBlackPhoto from '@/assets/joe-black.jpg';
+
 const AboutSection = () => {
   return (
     <section id="about" className="section-padding bg-secondary">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <div className="w-32 h-32 mx-auto bg-muted rounded-full mb-8 overflow-hidden border-4 border-background shadow-lg">
           <img
-            src="https://api.dicebear.com/7.x/avataaars/svg?seed=JoeBlack&backgroundColor=b6e3f4"
+            src={joeBlackPhoto}
             alt="Joe Black"
             className="w-full h-full object-cover"
           />
