@@ -1,4 +1,5 @@
-import { ArrowRight, Compass, Wrench, Settings, Flame, Sparkles } from 'lucide-react';
+import { ArrowRight, Compass, Wrench, Settings, Flame } from 'lucide-react';
+import logoIcon from '@/assets/logo-icon.png';
 
 const HeroSection = () => {
   const scrollToSection = (id: string) => {
@@ -12,7 +13,7 @@ const HeroSection = () => {
     <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-20 right-0 -z-10 opacity-[0.03]">
-        <Sparkles className="w-[500px] h-[500px]" />
+        <img src={logoIcon} alt="" className="w-[500px] h-[500px]" />
       </div>
 
       <div className="container-width grid lg:grid-cols-2 gap-12 items-center">
@@ -72,7 +73,7 @@ const HeroSection = () => {
 
             {/* Center Connection */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-background rounded-full shadow-2xl flex items-center justify-center z-10 border-4 border-background">
-              <Sparkles className="w-8 h-8 text-accent" />
+              <img src={logoIcon} alt="Logo" className="w-10 h-10" />
             </div>
           </div>
         </div>
