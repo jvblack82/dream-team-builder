@@ -44,7 +44,7 @@ const ProblemSection = () => {
             Why Most Team Building Fails: The "Monday Effect"
           </h2>
           <p className="text-lg text-muted-foreground">
-            You spend the budget on a massive Team Building Event. Everyone high-fives. It
+            You spend the budget on a massive team building event. Everyone high-fives. It
             feels inspiring. Then comes Monday. The energy is gone, and everyone goes
             back to the exact same behaviors.
           </p>
