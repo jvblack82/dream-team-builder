@@ -15,7 +15,7 @@ const FrameworkPoint = ({ icon, title, subtitle, desc }: FrameworkPointProps) =>
     </div>
     <div>
       <h3 className="text-xl font-bold text-foreground">{title}</h3>
-      <div className="text-sm font-semibold text-muted-foreground mb-3 uppercase tracking-wide">
+      <div className="text-sm font-semibold text-muted-foreground mb-3 tracking-wide">
         {subtitle}
       </div>
       <p className="text-muted-foreground leading-relaxed">{desc}</p>
