@@ -30,8 +30,8 @@ const ProblemSection = () => {
       icon: <TrendingUp className="w-6 h-6 text-destructive" />,
     },
     {
-      title: "The Skill Trap",
-      desc: "Promoting people because they are good at a task, not because they are good at leading people. You gain a manager but lose a leader.",
+      title: "Leadership Cheat Code",
+      desc: "\"You're good at this! You lead it.\" Stop promoting because they're good at the job, learn to promote because they're good at leading people.",
       icon: <Target className="w-6 h-6 text-destructive" />,
     },
   ];
