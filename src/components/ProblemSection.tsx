@@ -25,8 +25,8 @@ const ProblemSection = () => {
       icon: <Users className="w-6 h-6 text-destructive" />,
     },
     {
-      title: "The Iceberg of Indifference",
-      desc: "Ignoring culture because 'we're too busy' leads to operational debt you can't pay back later. Behavior drifts until it's toxic.",
+      title: "Why Most Team Building Fails: The \"Monday Effect\"",
+      desc: "You spend the budget on a massive team building event. Everyone high-fives. It feels inspiring. Then comes Monday. The energy is gone, and everyone goes back to the exact same behaviors.",
       icon: <TrendingUp className="w-6 h-6 text-destructive" />,
     },
     {
@@ -41,12 +41,10 @@ const ProblemSection = () => {
       <div className="container-width">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-foreground">
-            Why Most Team Building Fails: The "Monday Effect"
+            Culture is Strategic
           </h2>
           <p className="text-lg text-muted-foreground">
-            You spend the budget on a massive team building event. Everyone high-fives. It
-            feels inspiring. Then comes Monday. The energy is gone, and everyone goes
-            back to the exact same behaviors.
+            You have culture and if you're not building it on purpose, it might just stink.
           </p>
         </div>
 
