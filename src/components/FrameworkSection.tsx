@@ -56,7 +56,7 @@ const FrameworkSection = () => {
       <div className="container-width">
         <div className="text-center mb-20">
           <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-foreground">
-            The 4 Pieces of High-Performance
+            The 4 Elements of High-Performance
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             True engagement isn't magic. It happens when four specific elements lock
