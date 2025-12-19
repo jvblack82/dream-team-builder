@@ -26,9 +26,10 @@ const ResultsSection = () => {
     <section id="results" className="section-padding bg-primary text-primary-foreground overflow-hidden">
       <div className="container-width">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">Culture By The Numbers</h2>
+          <h2 className="text-4xl lg:text-5xl font-bold mb-2">Culture Driven Performance</h2>
+          <p className="text-accent font-bold mb-6">Case Study Pizza 4P's</p>
           <p className="text-primary-foreground/70 text-lg max-w-3xl mx-auto">
-            At 4P's, our values-driven approach delivers measurable results that transform the business.
+            Behavior-driven approach delivers measurable results that transforms the business.
           </p>
         </div>
 
