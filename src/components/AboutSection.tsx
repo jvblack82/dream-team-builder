@@ -15,21 +15,17 @@ const AboutSection = () => {
           From Landscaping to Leadership
         </h2>
         <p className="text-xl text-muted-foreground mb-8 font-light italic">
-          "I'm not a career academic. I learned that you can engineer culture. It's
-          not luck. It's a strategic asset."
+          "Everything works better if people love what they do."
         </p>
         <div className="prose prose-lg mx-auto text-muted-foreground max-w-2xl">
           <p>
-            I spent 9 years running a landscaping business where I accidentally
-            discovered that <strong className="text-foreground">Integrity</strong> was more profitable than
-            shortcuts. Since then, I spent four years with{' '}
-            <strong className="text-foreground">Delivering Happiness</strong>, consulting for banks and
-            startups, and served as the Culture & Operations Excellence Director at
-            Pizza 4P's.
+            Joe spent four years consulting with the internationally acclaimed corporate culture transformation specialist, Delivering Happiness. He worked with clients such as VPBank, Seller Candy, Sathapana Bank, as well as serving as the Culture & Operations Excellence Director at Pizza 4P's for the past two years—one of the fastest-growing restaurant chains in SE Asia, with over 40 locations and 3,700 employees in 5 countries.
           </p>
-          <p className="mt-6 font-bold text-foreground">
-            My Mission: To positively impact 100,000 lives by enabling leaders to
-            build high-performing, purpose-driven teams by 2030.
+          <p className="mt-6">
+            Through all this he found that <strong className="text-foreground">everything works better if people love what they do</strong>, the company does better AND people live better lives.
+          </p>
+          <p className="mt-6">
+            Joe founded Dreamscope with the mission to <strong className="text-foreground">positively impact 100,000 lives</strong> by enabling leaders to build high-performing, purpose-driven teams across Southeast Asia and beyond by 2030.
           </p>
         </div>
       </div>
