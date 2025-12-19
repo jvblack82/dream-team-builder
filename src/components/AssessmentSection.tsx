@@ -1,6 +1,12 @@
 import { ClipboardCheck, Smile, BarChart } from 'lucide-react';
 
 const AssessmentSection = () => {
+  const scrollToContact = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   const assessmentItems = [
     {
       icon: <ClipboardCheck className="w-5 h-5" />,
@@ -88,7 +94,10 @@ const AssessmentSection = () => {
                   </div>
                 ))}
               </div>
-              <button className="mt-8 w-full bg-primary text-primary-foreground py-4 rounded-xl font-bold hover:opacity-90 transition-colors shadow-elegant">
+              <button 
+                onClick={scrollToContact}
+                className="mt-8 w-full bg-primary text-primary-foreground py-4 rounded-xl font-bold hover:opacity-90 transition-colors shadow-elegant"
+              >
                 Schedule Strategy Call
               </button>
             </div>
