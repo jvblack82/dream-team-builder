@@ -38,7 +38,7 @@ const AssessmentSection = () => {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Most consultants hand you a 50-page PDF that collects dust. We come in
             and do a diagnostic that tells you exactly where you are winning and
-            where you are bleeding efficiency.
+            where you are bleeding.
           </p>
         </div>
 
