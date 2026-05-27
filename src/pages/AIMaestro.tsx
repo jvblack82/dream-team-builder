@@ -1,35 +1,257 @@
 import { useEffect } from "react";
 
-// Phase 1 placeholder. Replaced by the full AI Maestro page in Phase 3.
 const css = `
-  .aim-soon {
-    min-height: 72vh;
-    background: #FBF8F1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4rem 2rem;
-    font-family: 'Inter', sans-serif;
+  :root {
+    --aim-dark: #1E2B3A;
+    --aim-caramel: #B5895A;
+    --aim-caramel-deep: #9C7144;
+    --aim-cream: #FBF8F1;
+    --aim-white: #FFFFFF;
+    --aim-body: #4A4036;
+    --aim-muted: #8A7E70;
+    --aim-line: #E7DECF;
   }
-  .aim-soon-inner { max-width: 600px; text-align: center; }
-  .aim-soon-kicker {
+
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+  .aim-page {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--aim-body);
+    background: var(--aim-cream);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .aim-page * { box-sizing: border-box; }
+
+  .aim-wrap { max-width: 1080px; margin: 0 auto; padding: 0 2rem; }
+
+  .aim-kicker {
+    font-size: 0.74rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: #B5895A;
+    letter-spacing: 2.5px;
+    color: var(--aim-caramel);
+  }
+
+  .aim-display {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    color: var(--aim-dark);
+    line-height: 1.1;
+    letter-spacing: 0.3px;
+  }
+
+  /* HERO */
+  .aim-hero {
+    background: var(--aim-cream);
+    padding: 5rem 0 5.5rem;
+    border-bottom: 1px solid var(--aim-line);
+  }
+  .aim-hero .aim-kicker { display: block; margin-bottom: 1.4rem; }
+  .aim-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    color: var(--aim-dark);
+    font-size: clamp(2.8rem, 6vw, 4.6rem);
+    line-height: 1.05;
+    max-width: 14ch;
+    margin-bottom: 1.6rem;
+  }
+  .aim-hero .aim-dek {
+    font-size: 1.2rem;
+    color: var(--aim-body);
+    max-width: 600px;
+    margin-bottom: 2.4rem;
+  }
+  .aim-cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; }
+  .aim-btn {
+    display: inline-block;
+    background: var(--aim-caramel);
+    color: #fff;
+    padding: 0.95rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .aim-btn:hover { background: var(--aim-caramel-deep); transform: translateY(-1px); }
+  .aim-link {
+    color: var(--aim-dark);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.98rem;
+    border-bottom: 1px solid var(--aim-caramel);
+    padding-bottom: 2px;
+  }
+  .aim-link:hover { color: var(--aim-caramel); }
+
+  /* SECTIONS */
+  .aim-section { padding: 5.5rem 0; }
+  .aim-section.on-white { background: var(--aim-white); }
+  .aim-section.on-cream { background: var(--aim-cream); }
+  .aim-section.on-dark { background: var(--aim-dark); color: rgba(255,255,255,0.8); }
+
+  .aim-snum {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--aim-caramel);
+    margin-bottom: 0.6rem;
+  }
+  .aim-h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    color: var(--aim-dark);
+    font-size: clamp(2rem, 4vw, 2.9rem);
+    line-height: 1.12;
+    margin-bottom: 1.4rem;
+    max-width: 18ch;
+  }
+  .on-dark .aim-h2 { color: #fff; }
+  .aim-lead {
+    font-size: 1.12rem;
+    max-width: 640px;
     margin-bottom: 1.2rem;
   }
-  .aim-soon h1 {
+  .aim-body-p { font-size: 1.02rem; max-width: 640px; margin-bottom: 1.1rem; }
+  .aim-body-p strong { color: var(--aim-dark); font-weight: 600; }
+  .on-dark .aim-body-p strong { color: #fff; }
+
+  .aim-pullout {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 5vw, 3rem);
-    color: #1E2B3A;
-    margin-bottom: 1rem;
-    font-weight: 600;
-    line-height: 1.15;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    font-weight: 500;
+    font-style: italic;
+    color: var(--aim-caramel);
+    max-width: 20ch;
+    line-height: 1.25;
+    margin-top: 2.4rem;
   }
-  .aim-soon p { color: #6b6257; font-size: 1.05rem; line-height: 1.7; }
-  .aim-soon a { color: #B5895A; font-weight: 600; text-decoration: none; }
+  .on-dark .aim-pullout { color: var(--aim-caramel); }
+
+  /* SECTION 01 */
+  .aim-why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
+  .aim-why-statement {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+    font-weight: 600;
+    color: var(--aim-dark);
+    line-height: 1.2;
+  }
+  .aim-why-statement span { color: var(--aim-caramel); }
+
+  /* SECTION 02 categories */
+  .aim-cats { display: flex; flex-direction: column; gap: 0; margin-top: 1rem; }
+  .aim-cat {
+    display: grid;
+    grid-template-columns: 1.6rem 1fr;
+    gap: 1.2rem;
+    padding: 1.8rem 0;
+    border-top: 1px solid var(--aim-line);
+  }
+  .aim-cat:last-child { border-bottom: 1px solid var(--aim-line); }
+  .aim-cat-n {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--aim-caramel);
+    padding-top: 0.2rem;
+  }
+  .aim-cat h3 { font-size: 1.18rem; color: var(--aim-dark); margin-bottom: 0.3rem; font-weight: 600; }
+  .aim-cat p { font-size: 1rem; color: var(--aim-body); margin-bottom: 0.5rem; }
+  .aim-cat .aim-proof { font-size: 0.92rem; color: var(--aim-muted); font-style: italic; }
+  .aim-note {
+    margin-top: 2rem;
+    font-size: 0.92rem;
+    font-style: italic;
+    color: var(--aim-muted);
+    max-width: 640px;
+  }
+
+  /* SECTION 03 stays-yours */
+  .aim-keep { list-style: none; margin: 1.5rem 0 0; padding: 0; max-width: 720px; }
+  .aim-keep li {
+    display: grid;
+    grid-template-columns: 1.6rem 1fr;
+    gap: 1rem;
+    padding: 1.1rem 0;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.82);
+  }
+  .aim-keep li:last-child { border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .aim-keep .x { color: var(--aim-caramel); font-weight: 600; font-size: 1.1rem; }
+  .aim-keep strong { color: #fff; font-weight: 600; }
+
+  /* SECTION 04 engagement */
+  .aim-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; margin-top: 1.5rem; }
+  .aim-step {
+    background: var(--aim-cream);
+    border: 1px solid var(--aim-line);
+    border-radius: 12px;
+    padding: 1.8rem;
+  }
+  .aim-step .aim-step-n {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: var(--aim-caramel);
+    line-height: 1;
+    margin-bottom: 0.8rem;
+  }
+  .aim-step h3 { font-size: 1.05rem; color: var(--aim-dark); margin-bottom: 0.5rem; font-weight: 600; }
+  .aim-step p { font-size: 0.95rem; color: var(--aim-body); }
+  .aim-foot-rule { margin-top: 2rem; font-size: 0.92rem; color: var(--aim-muted); font-style: italic; max-width: 700px; }
+
+  /* SECTION 05 credentials */
+  .aim-creds { list-style: none; margin: 1.8rem 0 0; padding: 0; }
+  .aim-cred {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    gap: 1.5rem;
+    padding: 1.2rem 0;
+    border-top: 1px solid var(--aim-line);
+  }
+  .aim-cred:last-child { border-bottom: 1px solid var(--aim-line); }
+  .aim-cred .aim-cred-role { font-weight: 600; color: var(--aim-dark); font-size: 0.98rem; }
+  .aim-cred .aim-cred-role span { display: block; color: var(--aim-caramel); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 0.2rem; }
+  .aim-cred p { font-size: 0.98rem; color: var(--aim-body); }
+
+  /* CTA */
+  .aim-cta-band { background: var(--aim-caramel); color: #fff; padding: 5rem 0; text-align: center; }
+  .aim-cta-band h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: clamp(2.1rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+  .aim-cta-band p { font-size: 1.08rem; color: rgba(255,255,255,0.9); max-width: 540px; margin: 0 auto 2rem; }
+  .aim-cta-band .aim-btn-light {
+    display: inline-block;
+    background: #fff;
+    color: var(--aim-caramel-deep);
+    padding: 1rem 2.4rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.05rem;
+    transition: transform 0.2s;
+  }
+  .aim-cta-band .aim-btn-light:hover { transform: translateY(-1px); }
+  .aim-cta-email { margin-top: 1.3rem; font-size: 0.92rem; color: rgba(255,255,255,0.8); }
+  .aim-cta-email a { color: #fff; text-decoration: underline; }
+
+  .aim-footer { background: var(--aim-dark); padding: 2rem; text-align: center; }
+  .aim-footer p { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+  .aim-footer a { color: var(--aim-caramel); text-decoration: none; }
+
+  @media (max-width: 820px) {
+    .aim-why-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .aim-steps { grid-template-columns: 1fr; }
+    .aim-cred { grid-template-columns: 1fr; gap: 0.4rem; }
+    .aim-section { padding: 4rem 0; }
+  }
 `;
 
 const AIMaestro = () => {
@@ -41,7 +263,7 @@ const AIMaestro = () => {
     const link = document.createElement("link");
     link.rel = "stylesheet";
     link.href =
-      "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap";
+      "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap";
     document.head.appendChild(link);
 
     return () => {
@@ -51,20 +273,325 @@ const AIMaestro = () => {
   }, []);
 
   return (
-    <div className="aim-soon">
-      <div className="aim-soon-inner">
-        <div className="aim-soon-kicker">Dreamscope · AI Maestro</div>
-        <h1>The operations mind that understands AI.</h1>
-        <p>
-          This page is launching shortly. In the meantime, the 15-minute
-          discovery is open.
-        </p>
-        <p style={{ marginTop: "1.5rem" }}>
-          <a href="https://discovery.dreamscope.win/ai_maestro">
+    <div className="aim-page">
+      {/* HERO */}
+      <header className="aim-hero">
+        <div className="aim-wrap">
+          <span className="aim-kicker">Dreamscope · AI Maestro</span>
+          <h1>The operations mind that understands AI.</h1>
+          <p className="aim-dek">
+            I'm an operator, not a developer, who takes expert work and trains
+            AI to do it. Months of work becomes days.
+          </p>
+          <div className="aim-cta-row">
+            <a className="aim-btn" href="https://discovery.dreamscope.win/ai_maestro">
+              Take the 15-minute discovery →
+            </a>
+            <a className="aim-link" href="#plays">
+              See where it plays ↓
+            </a>
+          </div>
+        </div>
+      </header>
+
+      {/* 01 WHY THIS EXISTS */}
+      <section className="aim-section on-white">
+        <div className="aim-wrap">
+          <div className="aim-snum">01 / Why this exists</div>
+          <div className="aim-why-grid">
+            <div>
+              <p className="aim-why-statement">
+                AI doesn't fail because the model is weak. It fails because no
+                one taught it the judgment the work actually requires.{" "}
+                <span>Tech teams build tools. Operators build judgment.</span>
+              </p>
+            </div>
+            <div>
+              <p className="aim-body-p">
+                I've spent nine years building the systems that run companies:
+                SOP suites, KPI structures, and BPM rollouts at Christina's,
+                Dreamplex, Seller Candy, and Pizza 4P's. Then I built the Culture
+                Engine, where I trained AI to do expert work that used to take
+                months.
+              </p>
+              <p className="aim-body-p">
+                AI Maestro is that same move, pointed at whatever process in your
+                company is bottlenecked on one person's expertise. Not a pivot.
+                An upgrade.
+              </p>
+              <p className="aim-body-p">
+                The hard part isn't getting AI to do the work once. It's knowing
+                where it quietly gets the work <strong>wrong</strong> inside your
+                domain, and engineering the checks that catch it before you have
+                to. That is earned building, not a setting you toggle.
+              </p>
+              <p className="aim-pullout">
+                You're getting the operations mind that understands AI.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 02 WHERE IT PLAYS */}
+      <section className="aim-section on-cream" id="plays">
+        <div className="aim-wrap">
+          <div className="aim-snum">02 / Where AI Maestro plays</div>
+          <h2 className="aim-h2">Five places expert work compresses.</h2>
+          <div className="aim-cats">
+            <div className="aim-cat">
+              <div className="aim-cat-n">01</div>
+              <div>
+                <h3>Process compression</h3>
+                <p>
+                  Map a process end to end, then train AI on the steps that
+                  carry real judgment.
+                </p>
+                <p className="aim-proof">
+                  Interim COO at Seller Candy through 7-to-70 headcount and 6x
+                  revenue. Three end-to-end BPM rollouts. ~4,056 hours a year
+                  automated out of one operation at Dreamplex.
+                </p>
+              </div>
+            </div>
+            <div className="aim-cat">
+              <div className="aim-cat-n">02</div>
+              <div>
+                <h3>Reporting and insight</h3>
+                <p>
+                  The data exists. The report doesn't. AI pulls it together,
+                  writes the narrative, and flags the thing that's off.
+                </p>
+                <p className="aim-proof">
+                  On the Culture Engine, leaders query their own data in plain
+                  English and get cited answers in seconds, live in the room.
+                </p>
+              </div>
+            </div>
+            <div className="aim-cat">
+              <div className="aim-cat-n">03</div>
+              <div>
+                <h3>The company brain</h3>
+                <p>
+                  Feed it everything (values, history, customers, processes) and
+                  it answers with full context.
+                </p>
+                <p className="aim-proof">
+                  The Culture Engine is the built proof. Three data sources, 19
+                  drivers, AI-classified and queryable. On a 450-person company
+                  it flagged 5 of 7 leadership departures before they happened,
+                  and a -87% sentiment crisis that 40 leaders missed.
+                </p>
+              </div>
+            </div>
+            <div className="aim-cat">
+              <div className="aim-cat-n">04</div>
+              <div>
+                <h3>Knowledge consolidation</h3>
+                <p>
+                  Scattered tribal knowledge becomes structured, searchable, and
+                  validated.
+                </p>
+                <p className="aim-proof">
+                  260+ frontline SOPs at Pizza 4P's consolidated into one
+                  operating backbone, then wired into the training so managers
+                  learn the playbook they run.
+                </p>
+              </div>
+            </div>
+            <div className="aim-cat">
+              <div className="aim-cat-n">05</div>
+              <div>
+                <h3>Customer-facing intelligence</h3>
+                <p>
+                  Inbound questions, order routing, recommendations, demand
+                  sensing.
+                </p>
+                <p className="aim-proof">
+                  The hardest of the five, because data quality gates it. We say
+                  so up front.
+                </p>
+              </div>
+            </div>
+          </div>
+          <p className="aim-note">
+            If the work is pure repetition with no judgment, that's RPA, and
+            we'll point you to it. Where the judgment changes case by case is
+            where AI needs an operator, and where we belong.
+          </p>
+        </div>
+      </section>
+
+      {/* 03 WHAT STAYS YOURS */}
+      <section className="aim-section on-dark">
+        <div className="aim-wrap">
+          <div className="aim-snum">03 / What stays yours</div>
+          <h2 className="aim-h2">AI runs the loop. You decide what the loop is for.</h2>
+          <ul className="aim-keep">
+            <li>
+              <span className="x">×</span>
+              <span>
+                <strong>The strategic picks.</strong> Which work matters this
+                year. Which problem moves the company.
+              </span>
+            </li>
+            <li>
+              <span className="x">×</span>
+              <span>
+                <strong>The standards themselves.</strong> What "good" means at
+                your company.
+              </span>
+            </li>
+            <li>
+              <span className="x">×</span>
+              <span>
+                <strong>The judgment calls.</strong> Cash flow, hiring,
+                structural moves. The shape of the company.
+              </span>
+            </li>
+            <li>
+              <span className="x">×</span>
+              <span>
+                <strong>The final say.</strong> AI runs the loop. You decide
+                what the loop is for.
+              </span>
+            </li>
+          </ul>
+          <p className="aim-pullout">
+            The right hand helps you make the call. It does not make the call for
+            you.
+          </p>
+        </div>
+      </section>
+
+      {/* 04 HOW AN ENGAGEMENT WORKS */}
+      <section className="aim-section on-white">
+        <div className="aim-wrap">
+          <div className="aim-snum">04 / How an engagement works</div>
+          <h2 className="aim-h2">We diagnose before we propose.</h2>
+          <div className="aim-steps">
+            <div className="aim-step">
+              <div className="aim-step-n">1</div>
+              <h3>Listening</h3>
+              <p>
+                No pitch, no pricing. We get to know the work and where the
+                hours actually go.
+              </p>
+            </div>
+            <div className="aim-step">
+              <div className="aim-step-n">2</div>
+              <h3>What we heard</h3>
+              <p>
+                We bring back what we heard, specific and in your language. Maybe
+                a tease of what we'd build.
+              </p>
+            </div>
+            <div className="aim-step">
+              <div className="aim-step-n">3</div>
+              <h3>The proposal</h3>
+              <p>
+                Scope and timeline. If you walked in knowing exactly what you
+                want, we skip straight here.
+              </p>
+            </div>
+          </div>
+          <p className="aim-foot-rule">
+            Three rules that don't bend. No proposal until the operator who knows
+            the work is in the room. No hourly pricing. No proposal without
+            diagnosis.
+          </p>
+        </div>
+      </section>
+
+      {/* 05 CREDENTIALS */}
+      <section className="aim-section on-cream">
+        <div className="aim-wrap">
+          <div className="aim-snum">05 / The operator</div>
+          <h2 className="aim-h2">Fifteen-plus years operating. Nine across Asia.</h2>
+          <p className="aim-lead">
+            Vietnam, Cambodia, India, Japan. The career has been one long run of
+            building the systems that let companies scale without losing what
+            made them good.
+          </p>
+          <ul className="aim-creds">
+            <li className="aim-cred">
+              <div className="aim-cred-role">
+                Pizza 4P's<span>Culture &amp; Ops Excellence Director</span>
+              </div>
+              <p>
+                Built Culture and L&amp;D from zero across 40+ locations, 5
+                countries, 3,700 employees. 260+ SOPs into one backbone. eNPS up
+                20 points, happiness up 18-20%.
+              </p>
+            </li>
+            <li className="aim-cred">
+              <div className="aim-cred-role">
+                Seller Candy<span>Interim COO</span>
+              </div>
+              <p>
+                Built the operational foundation through 7-to-70 headcount and 6x
+                revenue. KPI structure, full SOP suite, HR, Finance, Training and
+                Ops from scratch.
+              </p>
+            </li>
+            <li className="aim-cred">
+              <div className="aim-cred-role">
+                Dreamplex<span>Director of Central Operations</span>
+              </div>
+              <p>
+                Full operations stack and BPM automation across all locations.
+                Roughly 4,056 hours a year taken out of the work.
+              </p>
+            </li>
+            <li className="aim-cred">
+              <div className="aim-cred-role">
+                Christina's Vietnam<span>Operations Team Leader</span>
+              </div>
+              <p>
+                Led operations through scaling from 3 to 8 cities and 50 to 500+
+                employees. Built the manual and SOP suite from scratch.
+              </p>
+            </li>
+            <li className="aim-cred">
+              <div className="aim-cred-role">
+                Dreamscope<span>The Culture Engine</span>
+              </div>
+              <p>
+                The most recent build and the most demonstrable. An operator
+                trained AI to do expert work that used to take months. Now the AI
+                does it in days.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="aim-cta-band">
+        <div className="aim-wrap">
+          <h2>Take the 15-minute discovery.</h2>
+          <p>
+            Five categories, one priority pick, three free-text questions. We
+            read every one. If your problem fits, we'll book a call.
+          </p>
+          <a
+            className="aim-btn-light"
+            href="https://discovery.dreamscope.win/ai_maestro"
+          >
             Take the discovery →
           </a>
+          <div className="aim-cta-email">
+            Or email directly: <a href="mailto:joe@dreamscope.win">joe@dreamscope.win</a>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="aim-footer">
+        <p>
+          Dreamscope · <a href="mailto:joe@dreamscope.win">joe@dreamscope.win</a> · © 2026
         </p>
-      </div>
+      </footer>
     </div>
   );
 };
