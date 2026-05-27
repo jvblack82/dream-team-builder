@@ -1,0 +1,350 @@
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import joeBlackPhoto from "@/assets/joe-black.jpg";
+
+const css = `
+  :root {
+    --dark: #1E2B3A;
+    --teal: #0C7C8A;
+    --teal-light: #0E96A6;
+    --caramel: #B5895A;
+    --caramel-deep: #9C7144;
+    --cream: #F7F4EF;
+    --sand: #EDE8E0;
+    --warm-white: #FDFCFA;
+    --body: #3A3A3A;
+    --muted: #7A7A7A;
+  }
+
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+  .land-page {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--body);
+    background: var(--warm-white);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .land-page * { box-sizing: border-box; }
+  .land-wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+  /* HERO */
+  .land-hero {
+    background: var(--dark);
+    color: #fff;
+    padding: 5rem 0 5.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .land-hero::after {
+    content: '';
+    position: absolute;
+    top: -40%; right: -15%;
+    width: 620px; height: 620px;
+    background: radial-gradient(circle, rgba(12,124,138,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .land-hero-inner { position: relative; z-index: 1; }
+  .land-kicker {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--teal-light);
+    margin-bottom: 1.4rem;
+  }
+  .land-hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    line-height: 1.08;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    max-width: 16ch;
+  }
+  .land-hero p.land-sub {
+    font-size: 1.18rem;
+    color: rgba(255,255,255,0.78);
+    max-width: 640px;
+    line-height: 1.7;
+    margin-bottom: 2.6rem;
+  }
+  .land-hero-btns { display: flex; flex-wrap: wrap; gap: 1rem; }
+  .land-btn {
+    display: inline-block;
+    padding: 0.95rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .land-btn.teal { background: var(--teal); color: #fff; }
+  .land-btn.teal:hover { background: var(--teal-light); transform: translateY(-1px); }
+  .land-btn.caramel { background: var(--caramel); color: #fff; }
+  .land-btn.caramel:hover { background: var(--caramel-deep); transform: translateY(-1px); }
+
+  /* CREDIBILITY BAR */
+  .land-cred {
+    background: var(--cream);
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--sand);
+  }
+  .land-cred-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+  .land-cred-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem;
+    color: var(--dark);
+    display: block;
+    margin-bottom: 0.4rem;
+    line-height: 1;
+  }
+  .land-cred-label { font-size: 0.86rem; color: var(--muted); line-height: 1.5; }
+
+  /* TWO PRACTICES */
+  .land-practices { padding: 5.5rem 0; background: var(--warm-white); }
+  .land-practices-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .land-practice {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    border: 1px solid var(--sand);
+    border-top: 4px solid var(--teal);
+    border-radius: 14px;
+    padding: 2.5rem;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .land-practice:hover { transform: translateY(-3px); box-shadow: 0 16px 40px -18px rgba(30,43,58,0.25); }
+  .land-practice.aim { border-top-color: var(--caramel); }
+  .land-practice .lp-eyebrow {
+    font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.8rem;
+  }
+  .land-practice.ce .lp-eyebrow { color: var(--teal); }
+  .land-practice.aim .lp-eyebrow { color: var(--caramel); }
+  .land-practice h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem; font-weight: 400; color: var(--dark); margin-bottom: 1rem; line-height: 1.15;
+  }
+  .land-practice p { font-size: 1rem; color: var(--body); margin-bottom: 1rem; line-height: 1.65; }
+  .land-practice p.lp-detail { font-size: 0.92rem; color: var(--muted); }
+  .land-practice .lp-more { font-weight: 600; font-size: 0.95rem; }
+  .land-practice.ce .lp-more { color: var(--teal); }
+  .land-practice.aim .lp-more { color: var(--caramel); }
+
+  /* ABOUT */
+  .land-about { background: var(--cream); padding: 5.5rem 0; }
+  .land-about-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+  .land-about-photo {
+    width: 128px; height: 128px; margin: 0 auto 2rem; border-radius: 50%;
+    overflow: hidden; border: 4px solid var(--warm-white); box-shadow: 0 10px 30px -12px rgba(30,43,58,0.35);
+  }
+  .land-about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .land-about h2 { font-family: 'DM Serif Display', serif; font-size: 2rem; font-weight: 400; color: var(--dark); margin-bottom: 0.8rem; }
+  .land-about .land-about-quote { font-size: 1.2rem; font-style: italic; color: var(--teal); margin-bottom: 2rem; }
+  .land-about p { font-size: 1.02rem; color: var(--body); line-height: 1.75; margin-bottom: 1.1rem; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .land-about p strong { color: var(--dark); font-weight: 600; }
+
+  /* CLOSING CTA */
+  .land-cta { background: var(--dark); color: #fff; text-align: center; padding: 5.5rem 0; }
+  .land-cta h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 400; margin-bottom: 1rem; }
+  .land-cta p { color: rgba(255,255,255,0.65); font-size: 1.08rem; max-width: 540px; margin: 0 auto 2rem; }
+  .land-cta-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+  .land-cta-email { margin-top: 1.4rem; font-size: 0.9rem; color: rgba(255,255,255,0.45); }
+  .land-cta-email a { color: var(--teal-light); text-decoration: none; }
+
+  /* FOOTER */
+  .land-footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.08); padding: 2rem; text-align: center; }
+  .land-footer p { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+  .land-footer a { color: var(--teal-light); text-decoration: none; }
+
+  @media (max-width: 860px) {
+    .land-cred-grid { grid-template-columns: repeat(2, 1fr); gap: 1.8rem; }
+    .land-practices-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .land-cred-grid { grid-template-columns: 1fr; }
+  }
+`;
+
+const Landing = () => {
+  useEffect(() => {
+    const style = document.createElement("style");
+    style.textContent = css;
+    document.head.appendChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
+  return (
+    <div className="land-page">
+      {/* HERO */}
+      <header className="land-hero">
+        <div className="land-wrap land-hero-inner">
+          <span className="land-kicker">Dreamscope Consulting · Ho Chi Minh City</span>
+          <h1>Two practices. One operator mindset.</h1>
+          <p className="land-sub">
+            I take expert work, train AI to do it, and ship faster than you
+            thought possible. The Culture Engine is one expression of that
+            pattern. AI Maestro is the broader version, for any process where
+            someone's expert judgment is the bottleneck.
+          </p>
+          <div className="land-hero-btns">
+            <Link className="land-btn teal" to="/culture-engine">
+              Explore the Culture Engine →
+            </Link>
+            <Link className="land-btn caramel" to="/ai-maestro">
+              Explore AI Maestro →
+            </Link>
+          </div>
+        </div>
+      </header>
+
+      {/* CREDIBILITY BAR */}
+      <div className="land-cred">
+        <div className="land-wrap">
+          <div className="land-cred-grid">
+            <div>
+              <span className="land-cred-num">9 yrs</span>
+              <span className="land-cred-label">
+                Scaling teams across Vietnam, Cambodia, India, Japan
+              </span>
+            </div>
+            <div>
+              <span className="land-cred-num">3,700</span>
+              <span className="land-cred-label">
+                Employees under the culture and ops build at Pizza 4P's
+              </span>
+            </div>
+            <div>
+              <span className="land-cred-num">6x</span>
+              <span className="land-cred-label">
+                Revenue growth steered as interim COO at Seller Candy
+              </span>
+            </div>
+            <div>
+              <span className="land-cred-num">4,056</span>
+              <span className="land-cred-label">
+                Hours a year automated out of the work at Dreamplex
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* TWO PRACTICES */}
+      <section className="land-practices">
+        <div className="land-wrap">
+          <div className="land-practices-grid">
+            <Link to="/culture-engine" className="land-practice ce">
+              <div className="lp-eyebrow">Discover phase</div>
+              <h2>The Culture Engine</h2>
+              <p>
+                AI-powered diagnostics for scaling companies. Find the root
+                cause of underperformance and surface the fix that already
+                exists inside your organization.
+              </p>
+              <p className="lp-detail">
+                19-driver model. Surveys, leadership interviews, focus groups,
+                all classified against the same framework. Evidence-backed and
+                traceable.
+              </p>
+              <span className="lp-more">Read more →</span>
+            </Link>
+            <Link to="/ai-maestro" className="land-practice aim">
+              <div className="lp-eyebrow">Operator + AI</div>
+              <h2>AI Maestro</h2>
+              <p>
+                I take expert work, break it down, and train AI to do it. Months
+                of work becomes days.
+              </p>
+              <p className="lp-detail">
+                Process compression, reporting and insight, the company brain,
+                knowledge consolidation, customer-facing intelligence. Five
+                categories. One operator who knows where AI gets it right and
+                where it gets it wrong.
+              </p>
+              <span className="lp-more">Read more →</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section className="land-about" id="about">
+        <div className="land-wrap">
+          <div className="land-about-inner">
+            <div className="land-about-photo">
+              <img src={joeBlackPhoto} alt="Joe Black" />
+            </div>
+            <h2>From landscaping to leadership</h2>
+            <p className="land-about-quote">
+              "Everything works better if people love what they do."
+            </p>
+            <p>
+              Joe spent four years consulting with the internationally
+              acclaimed corporate culture transformation specialist, Delivering
+              Happiness. He worked with clients such as VPBank, Seller Candy,
+              and Sathapana Bank, and served as the Culture and Operations
+              Excellence Director at Pizza 4P's, one of the fastest-growing
+              restaurant chains in SE Asia, with over 40 locations and 3,700
+              employees in 5 countries.
+            </p>
+            <p>
+              Through all of it he found that{" "}
+              <strong>everything works better if people love what they do</strong>.
+              The company does better, and people live better lives.
+            </p>
+            <p>
+              Joe founded Dreamscope with the mission to{" "}
+              <strong>positively impact 100,000 lives</strong> by enabling
+              leaders to build high-performing, purpose-driven teams across
+              Southeast Asia and beyond by 2030.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* CLOSING CTA */}
+      <section className="land-cta" id="contact">
+        <div className="land-wrap">
+          <h2>Let's start with a conversation.</h2>
+          <p>
+            30 minutes. No pitch. Just understanding what you're dealing with,
+            and whether either practice can help.
+          </p>
+          <div className="land-cta-btns">
+            <a className="land-btn teal" href="mailto:joe@dreamscope.win?subject=Dreamscope%20-%20Let's%20talk">
+              Book a conversation
+            </a>
+            <a className="land-btn caramel" href="https://discovery.dreamscope.win/ai_maestro">
+              Take the AI Maestro discovery →
+            </a>
+          </div>
+          <div className="land-cta-email">
+            Or email directly: <a href="mailto:joe@dreamscope.win">joe@dreamscope.win</a>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="land-footer">
+        <p>
+          Dreamscope Consulting · <a href="mailto:joe@dreamscope.win">joe@dreamscope.win</a> ·{" "}
+          <a href="https://www.linkedin.com/in/joevblack" target="_blank" rel="noreferrer">
+            LinkedIn
+          </a>{" "}
+          · © 2026
+        </p>
+      </footer>
+    </div>
+  );
+};
+
+export default Landing;
