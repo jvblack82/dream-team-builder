@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
-import Index from "./pages/Index";
+import CultureEngine from "./pages/CultureEngine";
 import AIMaestro from "./pages/AIMaestro";
 import NotFound from "./pages/NotFound";
 
@@ -18,9 +18,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
-            {/* "/" serves the Culture Engine content until the Landing lands in Phase 4 */}
-            <Route path="/" element={<Index />} />
-            <Route path="/culture-engine" element={<Index />} />
+            {/* "/" serves the Culture Engine page until the Landing lands in Phase 4 */}
+            <Route path="/" element={<CultureEngine />} />
+            <Route path="/culture-engine" element={<CultureEngine />} />
             <Route path="/ai-maestro" element={<AIMaestro />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
