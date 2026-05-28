@@ -91,6 +91,9 @@ const Navbar = () => {
             Dreamscope<span>.</span>
           </Link>
           <div className="ds-nav-links">
+            <NavLink to="/culture" className={linkClass}>
+              Culture
+            </NavLink>
             <NavLink to="/culture-engine" className={linkClass}>
               Culture Engine
             </NavLink>
@@ -113,6 +116,9 @@ const Navbar = () => {
           </button>
         </div>
         <div className={"ds-nav-mobile" + (open ? " open" : "")}>
+          <NavLink to="/culture" className={linkClass} onClick={close}>
+            Culture
+          </NavLink>
           <NavLink to="/culture-engine" className={linkClass} onClick={close}>
             Culture Engine
           </NavLink>

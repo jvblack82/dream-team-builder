@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Landing from "./pages/Landing";
+import CulturePractice from "./pages/CulturePractice";
 import CultureEngine from "./pages/CultureEngine";
 import AIMaestro from "./pages/AIMaestro";
 import NotFound from "./pages/NotFound";
@@ -20,6 +21,7 @@ const App = () => (
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Landing />} />
+            <Route path="/culture" element={<CulturePractice />} />
             <Route path="/culture-engine" element={<CultureEngine />} />
             <Route path="/ai-maestro" element={<AIMaestro />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

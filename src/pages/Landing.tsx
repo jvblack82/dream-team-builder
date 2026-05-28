@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import joeBlackPhoto from "@/assets/joe-black.jpg";
+import { COMPANY_LOGOS } from "@/data/companyLogos";
 
 const css = `
   :root {
@@ -83,6 +84,8 @@ const css = `
   .land-btn.teal:hover { background: var(--teal-light); transform: translateY(-1px); }
   .land-btn.caramel { background: var(--caramel); color: #fff; }
   .land-btn.caramel:hover { background: var(--caramel-deep); transform: translateY(-1px); }
+  .land-btn.teal-outline { background: transparent; color: var(--teal); border: 1px solid var(--teal); }
+  .land-btn.teal-outline:hover { background: var(--teal); color: #fff; transform: translateY(-1px); }
 
   /* CREDIBILITY BAR */
   .land-cred {
@@ -105,6 +108,13 @@ const css = `
     line-height: 1;
   }
   .land-cred-label { font-size: 0.86rem; color: var(--muted); line-height: 1.5; }
+
+  /* COMPANY LOGO STRIP */
+  .land-logos { background: var(--cream); padding: 0 0 3rem; border-bottom: 1px solid var(--sand); }
+  .land-logos-eyebrow { text-align: center; font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-bottom: 1.8rem; }
+  .land-logos-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 2.2rem 2.6rem; }
+  .land-logo { height: 28px; width: auto; filter: grayscale(100%); opacity: 0.5; transition: filter 0.3s, opacity 0.3s; }
+  .land-logo:hover { filter: grayscale(0%); opacity: 1; }
 
   /* TWO PRACTICES */
   .land-practices { padding: 5.5rem 0; background: var(--warm-white); }
@@ -190,14 +200,13 @@ const Landing = () => {
           <span className="land-kicker">Dreamscope Consulting · Ho Chi Minh City</span>
           <h1>Two practices. One operator mindset.</h1>
           <p className="land-sub">
-            I take expert work, train AI to do it, and ship faster than you
-            thought possible. The Culture Engine is one expression of that
-            pattern. AI Maestro is the broader version, for any process where
-            someone's expert judgment is the bottleneck.
+            Two parent practices. One operator who's spent 15 years building the
+            systems that let companies scale. Culture, end to end. AI Maestro,
+            for any process bottlenecked on one person's expert judgment.
           </p>
           <div className="land-hero-btns">
-            <Link className="land-btn teal" to="/culture-engine">
-              Explore the Culture Engine →
+            <Link className="land-btn teal" to="/culture">
+              Explore the Culture Practice →
             </Link>
             <Link className="land-btn caramel" to="/ai-maestro">
               Explore AI Maestro →
@@ -238,24 +247,36 @@ const Landing = () => {
         </div>
       </div>
 
+      {/* COMPANY LOGO STRIP */}
+      <section className="land-logos">
+        <div className="land-wrap">
+          <div className="land-logos-eyebrow">Where the practice has been built</div>
+          <div className="land-logos-row">
+            {COMPANY_LOGOS.map((logo) => (
+              <img key={logo.alt} className="land-logo" src={logo.src} alt={logo.alt} loading="lazy" decoding="async" />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* TWO PRACTICES */}
       <section className="land-practices">
         <div className="land-wrap">
           <div className="land-practices-grid">
-            <Link to="/culture-engine" className="land-practice ce">
-              <div className="lp-eyebrow">Discover phase</div>
-              <h2>The Culture Engine</h2>
+            <Link to="/culture" className="land-practice ce">
+              <div className="lp-eyebrow">End-to-end culture practice</div>
+              <h2>Culture</h2>
               <p>
-                AI-powered diagnostics for scaling companies. Find the root
-                cause of underperformance and surface the fix that already
-                exists inside your organization.
+                Inspire, Discover, Build, Implement. The four-phase Dreamscope
+                framework, applied as one engagement or any piece in isolation.
+                The Culture Engine is the AI tool that powers the Discover phase.
               </p>
               <p className="lp-detail">
-                19-driver model. Surveys, leadership interviews, focus groups,
-                all classified against the same framework. Evidence-backed and
-                traceable.
+                Vision and values that hold up under pressure. Leadership and
+                frontline data converged into a single playbook. Implementation
+                that lives in the work, not in a binder.
               </p>
-              <span className="lp-more">Read more →</span>
+              <span className="lp-more">See the practice →</span>
             </Link>
             <Link to="/ai-maestro" className="land-practice aim">
               <div className="lp-eyebrow">Operator + AI</div>
@@ -322,6 +343,9 @@ const Landing = () => {
           <div className="land-cta-btns">
             <a className="land-btn teal" href="mailto:joe@dreamscope.win?subject=Dreamscope%20-%20Let's%20talk">
               Book a conversation
+            </a>
+            <a className="land-btn teal-outline" href="https://discovery.dreamscope.win/culture">
+              Take the Culture discovery →
             </a>
             <a className="land-btn caramel" href="https://discovery.dreamscope.win/ai_maestro">
               Take the AI Maestro discovery →
