@@ -200,7 +200,7 @@ const Landing = () => {
           <span className="land-kicker">Dreamscope Consulting</span>
           <h1>Two practices. One operator mindset.</h1>
           <p className="land-sub">
-            Two parent practices. One operator who's spent 15 years building the
+            Two parent practices. One operator who's spent 20+ years building the
             systems that let companies scale. Culture, end to end. AI Maestro,
             for any process bottlenecked on one person's expert judgment.
           </p>
@@ -220,7 +220,7 @@ const Landing = () => {
         <div className="land-wrap">
           <div className="land-cred-grid">
             <div>
-              <span className="land-cred-num">15+ yrs</span>
+              <span className="land-cred-num">20+ yrs</span>
               <span className="land-cred-label">
                 Operating and building the systems that let companies scale
               </span>

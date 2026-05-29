@@ -270,7 +270,7 @@ const CulturePractice = () => {
     const prevDesc = metaDesc?.getAttribute("content") ?? null;
     metaDesc?.setAttribute(
       "content",
-      "An end-to-end culture practice for companies scaling fast. Inspire, Discover, Build, Implement. The four-phase Dreamscope framework, run by an operator with 15 years across Asia."
+      "An end-to-end culture practice for companies scaling fast. Inspire, Discover, Build, Implement. The four-phase Dreamscope framework, run by an operator with 20+ years building the systems that scale companies."
     );
 
     return () => {
@@ -290,7 +290,7 @@ const CulturePractice = () => {
             <h1>Build the place people want to do their best work.</h1>
             <p className="cp-hero-sub">
               An end-to-end culture practice for companies that are scaling,
-              scaling fast, or stuck. Built from 15 years of operating, 9 of
+              scaling fast, or stuck. Built from 20+ years of operating, 9 of
               them across Asia, and refined in the work itself.
             </p>
             <div className="cp-hero-btns">
@@ -319,7 +319,7 @@ const CulturePractice = () => {
               </span>
             </div>
             <div>
-              <span className="cp-cred-num">7 to 3,700</span>
+              <span className="cp-cred-num">7 to 10,000+</span>
               <span className="cp-cred-label">
                 The range of company sizes built within, startup to enterprise
               </span>
@@ -666,7 +666,7 @@ const CulturePractice = () => {
               <div className="cp-label">Why Dreamscope</div>
               <h2 className="cp-title">An operator, not a consultant.</h2>
               <p>
-                I'm an operator who's spent 15 years building the systems that
+                I'm an operator who's spent 20+ years building the systems that
                 let companies scale. Pizza 4P's through 5 countries and 3,700
                 people. Seller Candy from 7 to 70 and 6x revenue. Christina's
                 from 50 to 500+ people across 8 cities.

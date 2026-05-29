@@ -43,15 +43,25 @@ const css = `
 
   /* HERO */
   .aim-hero {
-    background: var(--aim-cream);
+    background: var(--aim-dark);
     padding: 5rem 0 5.5rem;
-    border-bottom: 1px solid var(--aim-line);
+    position: relative;
+    overflow: hidden;
   }
+  .aim-hero::after {
+    content: '';
+    position: absolute;
+    top: -45%; right: -10%;
+    width: 620px; height: 620px;
+    background: radial-gradient(circle, rgba(181,137,90,0.20) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .aim-hero .aim-wrap { position: relative; z-index: 1; }
   .aim-hero .aim-kicker { display: block; margin-bottom: 1.4rem; }
   .aim-hero h1 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 600;
-    color: var(--aim-dark);
+    color: #fff;
     font-size: clamp(2.8rem, 6vw, 4.6rem);
     line-height: 1.05;
     max-width: 14ch;
@@ -59,10 +69,11 @@ const css = `
   }
   .aim-hero .aim-dek {
     font-size: 1.2rem;
-    color: var(--aim-body);
+    color: rgba(255,255,255,0.78);
     max-width: 600px;
     margin-bottom: 2.4rem;
   }
+  .aim-hero .aim-link { color: rgba(255,255,255,0.85); }
   .aim-cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; }
   .aim-btn {
     display: inline-block;
@@ -184,25 +195,6 @@ const css = `
   .aim-keep .x { color: var(--aim-caramel); font-weight: 600; font-size: 1.1rem; }
   .aim-keep strong { color: #fff; font-weight: 600; }
 
-  /* SECTION 04 engagement */
-  .aim-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; margin-top: 1.5rem; }
-  .aim-step {
-    background: var(--aim-cream);
-    border: 1px solid var(--aim-line);
-    border-radius: 12px;
-    padding: 1.8rem;
-  }
-  .aim-step .aim-step-n {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    color: var(--aim-caramel);
-    line-height: 1;
-    margin-bottom: 0.8rem;
-  }
-  .aim-step h3 { font-size: 1.05rem; color: var(--aim-dark); margin-bottom: 0.5rem; font-weight: 600; }
-  .aim-step p { font-size: 0.95rem; color: var(--aim-body); }
-  .aim-foot-rule { margin-top: 2rem; font-size: 0.92rem; color: var(--aim-muted); font-style: italic; max-width: 700px; }
-
   /* SECTION 05 credentials */
   .aim-creds { list-style: none; margin: 1.8rem 0 0; padding: 0; }
   .aim-cred {
@@ -218,7 +210,7 @@ const css = `
   .aim-cred p { font-size: 0.98rem; color: var(--aim-body); }
 
   /* CTA */
-  .aim-cta-band { background: var(--aim-caramel); color: #fff; padding: 5rem 0; text-align: center; }
+  .aim-cta-band { background: var(--aim-dark); color: #fff; padding: 5rem 0; text-align: center; }
   .aim-cta-band h2 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 600;
@@ -229,16 +221,16 @@ const css = `
   .aim-cta-band p { font-size: 1.08rem; color: rgba(255,255,255,0.9); max-width: 540px; margin: 0 auto 2rem; }
   .aim-cta-band .aim-btn-light {
     display: inline-block;
-    background: #fff;
-    color: var(--aim-caramel-deep);
+    background: var(--aim-caramel);
+    color: #fff;
     padding: 1rem 2.4rem;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 700;
     font-size: 1.05rem;
-    transition: transform 0.2s;
+    transition: background 0.2s, transform 0.2s;
   }
-  .aim-cta-band .aim-btn-light:hover { transform: translateY(-1px); }
+  .aim-cta-band .aim-btn-light:hover { background: var(--aim-caramel-deep); transform: translateY(-1px); }
   .aim-cta-band .aim-btn-light-outline {
     display: inline-block;
     background: transparent;
@@ -260,7 +252,6 @@ const css = `
 
   @media (max-width: 820px) {
     .aim-why-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .aim-steps { grid-template-columns: 1fr; }
     .aim-cred { grid-template-columns: 1fr; gap: 0.4rem; }
     .aim-section { padding: 4rem 0; }
   }
@@ -427,9 +418,10 @@ const AIMaestro = () => {
             </div>
           </div>
           <p className="aim-note">
-            If the work is pure repetition with no judgment, that's RPA, and
-            we'll point you to it. Where the judgment changes case by case is
-            where AI needs an operator, and where we belong.
+            If the work is pure repetition with no judgment, there are simpler
+            automation tools for that, and we'll point you to them. Where the
+            judgment changes case by case is where AI needs an operator, and
+            where we belong.
           </p>
         </div>
       </section>
@@ -476,41 +468,17 @@ const AIMaestro = () => {
         </div>
       </section>
 
-      {/* 04 HOW AN ENGAGEMENT WORKS */}
+      {/* 04 HOW WE START */}
       <section className="aim-section on-white">
         <div className="aim-wrap">
-          <div className="aim-snum">04 / How an engagement works</div>
-          <h2 className="aim-h2">We diagnose before we propose.</h2>
-          <div className="aim-steps">
-            <div className="aim-step">
-              <div className="aim-step-n">1</div>
-              <h3>Listening</h3>
-              <p>
-                No pitch, no pricing. We get to know the work and where the
-                hours actually go.
-              </p>
-            </div>
-            <div className="aim-step">
-              <div className="aim-step-n">2</div>
-              <h3>What we heard</h3>
-              <p>
-                We bring back what we heard, specific and in your language. Maybe
-                a tease of what we'd build.
-              </p>
-            </div>
-            <div className="aim-step">
-              <div className="aim-step-n">3</div>
-              <h3>The proposal</h3>
-              <p>
-                Scope and timeline. If you walked in knowing exactly what you
-                want, we skip straight here.
-              </p>
-            </div>
-          </div>
-          <p className="aim-foot-rule">
-            Three rules that don't bend. No proposal until the operator who knows
-            the work is in the room. No hourly pricing. No proposal without
-            diagnosis.
+          <div className="aim-snum">04 / How we start</div>
+          <h2 className="aim-h2">Built around how you actually operate.</h2>
+          <p className="aim-lead">
+            Same as anywhere, the first thing I do is listen. But with AI Maestro
+            the hunt is for the biggest wins, the things eating the most time, or
+            slowing down your decisions and growth. This isn't a blanket solution
+            like software you bend your work around. It's built around what
+            matters to you and how you actually operate.
           </p>
         </div>
       </section>
@@ -519,7 +487,7 @@ const AIMaestro = () => {
       <section className="aim-section on-cream">
         <div className="aim-wrap">
           <div className="aim-snum">05 / The operator</div>
-          <h2 className="aim-h2">Fifteen-plus years operating. Nine across Asia.</h2>
+          <h2 className="aim-h2">Twenty-plus years operating. Nine across Asia.</h2>
           <p className="aim-lead">
             Vietnam, Cambodia, India, Japan. The career has been one long run of
             building the systems that let companies scale without losing what

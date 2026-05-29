@@ -386,9 +386,8 @@ const css = `
     transition: transform 0.2s, background 0.2s;
   }
   .cta-btn:hover { background: var(--teal-light); transform: translateY(-1px); }
-  .cta-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-  .cta-btn.outline { background: transparent; border: 1px solid rgba(255,255,255,0.4); }
-  .cta-btn.outline:hover { background: rgba(255,255,255,0.08); border-color: var(--teal-light); }
+  .cta-email { margin-top: 1.4rem; font-size: 0.9rem; color: rgba(255,255,255,0.45); }
+  .cta-email a { color: var(--teal-light); text-decoration: none; }
 
   .ds-footer {
     background: var(--dark);
@@ -814,15 +813,13 @@ const CultureEngine = () => {
           30 minutes. No pitch. Just understanding what you're dealing with, and
           whether this can help.
         </p>
-        <div className="cta-btns">
-          <a href="https://discovery.dreamscope.win/culture" className="cta-btn">
-            Take the culture discovery →
-          </a>
-          <a
-            href="mailto:joe@dreamscope.win?subject=Culture%20Engine%20-%20Let's%20talk"
-            className="cta-btn outline"
-          >
-            Email me to start →
+        <a href="https://discovery.dreamscope.win/culture" className="cta-btn">
+          Take the culture discovery →
+        </a>
+        <div className="cta-email">
+          Or email directly:{" "}
+          <a href="mailto:joe@dreamscope.win?subject=Culture%20Engine%20-%20Let's%20talk">
+            joe@dreamscope.win
           </a>
         </div>
       </section>
