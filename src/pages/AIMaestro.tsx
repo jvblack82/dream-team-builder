@@ -231,20 +231,8 @@ const css = `
     transition: background 0.2s, transform 0.2s;
   }
   .aim-cta-band .aim-btn-light:hover { background: var(--aim-caramel-deep); transform: translateY(-1px); }
-  .aim-cta-band .aim-btn-light-outline {
-    display: inline-block;
-    background: transparent;
-    color: #fff;
-    border: 1px solid rgba(255,255,255,0.6);
-    padding: 1rem 2.4rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.05rem;
-    transition: transform 0.2s, background 0.2s;
-  }
-  .aim-cta-band .aim-btn-light-outline:hover { background: rgba(255,255,255,0.14); transform: translateY(-1px); }
-  .aim-cta-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .aim-cta-email { margin-top: 1.4rem; font-size: 0.92rem; color: rgba(255,255,255,0.55); }
+  .aim-cta-email a { color: var(--aim-caramel); text-decoration: none; }
 
   .aim-footer { background: var(--aim-dark); padding: 2rem; text-align: center; }
   .aim-footer p { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
@@ -474,11 +462,11 @@ const AIMaestro = () => {
           <div className="aim-snum">04 / How we start</div>
           <h2 className="aim-h2">Built around how you actually operate.</h2>
           <p className="aim-lead">
-            Same as anywhere, the first thing I do is listen. But with AI Maestro
-            the hunt is for the biggest wins, the things eating the most time, or
-            slowing down your decisions and growth. This isn't a blanket solution
-            like software you bend your work around. It's built around what
-            matters to you and how you actually operate.
+            The first thing I do is listen. With AI Maestro the hunt is for the
+            biggest wins, the things eating the most time, or slowing down your
+            decisions and growth. This isn't a blanket solution like software you
+            bend your work around. It's built around what matters to you and how
+            you actually operate.
           </p>
         </div>
       </section>
@@ -554,12 +542,13 @@ const AIMaestro = () => {
             Five categories, one priority pick, three free-text questions. We
             read every one. If your problem fits, we'll book a call.
           </p>
-          <div className="aim-cta-btns">
-            <a className="aim-btn-light" href="https://discovery.dreamscope.win/ai_maestro">
-              Take the discovery →
-            </a>
-            <a className="aim-btn-light-outline" href="mailto:joe@dreamscope.win?subject=AI%20Maestro%20-%20Let's%20talk">
-              Email me directly →
+          <a className="aim-btn-light" href="https://discovery.dreamscope.win/ai_maestro">
+            Take the discovery →
+          </a>
+          <div className="aim-cta-email">
+            Or email directly:{" "}
+            <a href="mailto:joe@dreamscope.win?subject=AI%20Maestro%20-%20Let's%20talk">
+              joe@dreamscope.win
             </a>
           </div>
         </div>
