@@ -253,7 +253,15 @@ const Landing = () => {
           <div className="land-logos-eyebrow">Where the practice has been built</div>
           <div className="land-logos-row">
             {COMPANY_LOGOS.map((logo) => (
-              <img key={logo.alt} className="land-logo" src={logo.src} alt={logo.alt} loading="lazy" decoding="async" />
+              <img
+                key={logo.alt}
+                className="land-logo"
+                src={logo.src}
+                alt={logo.alt}
+                loading="lazy"
+                decoding="async"
+                style={logo.scale ? { height: `${Math.round(30 * logo.scale)}px` } : undefined}
+              />
             ))}
           </div>
         </div>

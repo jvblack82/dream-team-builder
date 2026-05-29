@@ -351,7 +351,15 @@ const CulturePractice = () => {
           <div className="cp-logos-eyebrow">Where the practice has been built</div>
           <div className="cp-logos-row">
             {COMPANY_LOGOS.map((logo) => (
-              <img key={logo.alt} className="cp-logo" src={logo.src} alt={logo.alt} loading="lazy" decoding="async" />
+              <img
+                key={logo.alt}
+                className="cp-logo"
+                src={logo.src}
+                alt={logo.alt}
+                loading="lazy"
+                decoding="async"
+                style={logo.scale ? { height: `${Math.round(32 * logo.scale)}px` } : undefined}
+              />
             ))}
           </div>
           <p className="cp-logos-note">
