@@ -239,8 +239,20 @@ const css = `
     transition: transform 0.2s;
   }
   .aim-cta-band .aim-btn-light:hover { transform: translateY(-1px); }
-  .aim-cta-email { margin-top: 1.3rem; font-size: 0.92rem; color: rgba(255,255,255,0.8); }
-  .aim-cta-email a { color: #fff; text-decoration: underline; }
+  .aim-cta-band .aim-btn-light-outline {
+    display: inline-block;
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.6);
+    padding: 1rem 2.4rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.05rem;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .aim-cta-band .aim-btn-light-outline:hover { background: rgba(255,255,255,0.14); transform: translateY(-1px); }
+  .aim-cta-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
 
   .aim-footer { background: var(--aim-dark); padding: 2rem; text-align: center; }
   .aim-footer p { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
@@ -574,14 +586,13 @@ const AIMaestro = () => {
             Five categories, one priority pick, three free-text questions. We
             read every one. If your problem fits, we'll book a call.
           </p>
-          <a
-            className="aim-btn-light"
-            href="https://discovery.dreamscope.win/ai_maestro"
-          >
-            Take the discovery →
-          </a>
-          <div className="aim-cta-email">
-            Or email directly: <a href="mailto:joe@dreamscope.win">joe@dreamscope.win</a>
+          <div className="aim-cta-btns">
+            <a className="aim-btn-light" href="https://discovery.dreamscope.win/ai_maestro">
+              Take the discovery →
+            </a>
+            <a className="aim-btn-light-outline" href="mailto:joe@dreamscope.win?subject=AI%20Maestro%20-%20Let's%20talk">
+              Email me directly →
+            </a>
           </div>
         </div>
       </section>

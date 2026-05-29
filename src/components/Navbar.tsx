@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import logoDreamscope from "@/assets/logo-dreamscope.png";
 
 const navStyles = `
   .ds-nav {
@@ -21,13 +22,11 @@ const navStyles = `
     justify-content: space-between;
   }
   .ds-nav-logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.3rem;
-    color: #1E2B3A;
+    display: flex;
+    align-items: center;
     text-decoration: none;
-    letter-spacing: 0.3px;
   }
-  .ds-nav-logo span { color: #0C7C8A; }
+  .ds-nav-logo img { height: 30px; width: auto; display: block; }
   .ds-nav-links {
     display: flex;
     align-items: center;
@@ -87,8 +86,8 @@ const Navbar = () => {
       <style>{navStyles}</style>
       <nav className="ds-nav">
         <div className="ds-nav-inner">
-          <Link to="/" className="ds-nav-logo" onClick={close}>
-            Dreamscope<span>.</span>
+          <Link to="/" className="ds-nav-logo" onClick={close} aria-label="Dreamscope home">
+            <img src={logoDreamscope} alt="Dreamscope" />
           </Link>
           <div className="ds-nav-links">
             <NavLink to="/culture" className={linkClass}>

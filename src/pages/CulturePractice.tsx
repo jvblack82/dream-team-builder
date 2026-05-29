@@ -219,12 +219,7 @@ const css = `
   .cp-engage .cp-label { color: var(--teal-light); }
   .cp-engage .cp-title { color: #fff; }
   .cp-engage .cp-sub { color: rgba(255,255,255,0.6); }
-  .cp-engage-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
-  .cp-eng-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.8rem; }
-  .cp-eng-card .cp-eng-step { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--teal-light); margin-bottom: 0.6rem; }
-  .cp-eng-card h4 { font-family: 'DM Serif Display', serif; font-size: 1.25rem; font-weight: 400; margin-bottom: 0.7rem; }
-  .cp-eng-card p { font-size: 0.92rem; color: rgba(255,255,255,0.65); line-height: 1.6; }
-  .cp-engage-note { margin-top: 2.2rem; font-style: italic; color: rgba(255,255,255,0.75); font-size: 1rem; text-align: center; max-width: 720px; margin-left: auto; margin-right: auto; }
+  .cp-engage-lead { font-size: 1.18rem; line-height: 1.8; color: rgba(255,255,255,0.85); max-width: 720px; }
 
   /* CLOSING CTA */
   .cp-cta { background: var(--dark); color: #fff; text-align: center; padding: 5.5rem 0; }
@@ -318,27 +313,27 @@ const CulturePractice = () => {
         <div className="cp-wrap">
           <div className="cp-cred-grid">
             <div>
-              <span className="cp-cred-num">15+ yrs</span>
-              <span className="cp-cred-label">
-                Operating and building the systems that scale culture and ops
-              </span>
-            </div>
-            <div>
-              <span className="cp-cred-num">3,700</span>
-              <span className="cp-cred-label">
-                Employees under the culture and ops build at Pizza 4P's
-              </span>
-            </div>
-            <div>
-              <span className="cp-cred-num">40+</span>
-              <span className="cp-cred-label">
-                Pizza 4P's locations across 5 countries
-              </span>
-            </div>
-            <div>
               <span className="cp-cred-num">9 yrs</span>
               <span className="cp-cred-label">
-                In Vietnam, Cambodia, India, and Japan
+                Building culture across Vietnam, Cambodia, India, and Japan
+              </span>
+            </div>
+            <div>
+              <span className="cp-cred-num">7 to 3,700</span>
+              <span className="cp-cred-label">
+                The range of company sizes built within, startup to enterprise
+              </span>
+            </div>
+            <div>
+              <span className="cp-cred-num">8 cities</span>
+              <span className="cp-cred-label">
+                Where Christina's scaled, 50 to 500+ employees
+              </span>
+            </div>
+            <div>
+              <span className="cp-cred-num">260+</span>
+              <span className="cp-cred-label">
+                Culture-led SOPs built so the work runs on its own
               </span>
             </div>
           </div>
@@ -394,7 +389,7 @@ const CulturePractice = () => {
               <p>Dreamscope is the practice for the first kind.</p>
             </div>
             <div className="cp-pullout">
-              Culture is behavior. Everything else is the wallpaper.
+              Culture is behavior. Everything else is just a nice idea.
             </div>
           </div>
         </div>
@@ -494,12 +489,11 @@ const CulturePractice = () => {
           <div className="cp-deliv">
             <div className="cp-deliv-title">What it produces</div>
             <ul className="cp-deliv-list">
-              <li>Survey series: eNPS, annual deep dive, pulse measurement</li>
-              <li>Leadership interviews, typically 20 to 40</li>
-              <li>Focus groups with frontline staff</li>
-              <li>AI classification of all three layers against the 19-driver framework</li>
-              <li>Live report delivery with AI Q&amp;A in the room</li>
-              <li>Co-creation of the action strategy with leadership</li>
+              <li>A State of Culture report: three data layers converged into one picture, with year-over-year and division-level views</li>
+              <li>A leader-by-leader profile, each quantified with a leadership score against the framework and, where available, the company's own values and competencies</li>
+              <li>A practice matrix: the best practices already working inside the company, mapped to its goals</li>
+              <li>A queryable knowledge base leadership can ask questions of, with cited evidence</li>
+              <li>A co-created action strategy: specific projects, named owners, and 90-day targets</li>
             </ul>
           </div>
           <p className="cp-phase-pullout">
@@ -568,7 +562,7 @@ const CulturePractice = () => {
             </div>
             <div className="cp-chain-item">
               <h4>Value Actions</h4>
-              <p>Concrete behaviors that embody the value, written so a new hire can hear them on day one and know what they mean.</p>
+              <p>Concrete behaviors that bring the value to life, written so a new hire can see themselves embodying it and form an emotional connection to it.</p>
             </div>
             <div className="cp-chain-item">
               <h4>North Star</h4>
@@ -678,14 +672,16 @@ const CulturePractice = () => {
                 from 50 to 500+ people across 8 cities.
               </p>
               <p>
-                The culture practice is what I do when a company brings me in to
-                do the work itself, not advise on it. The Culture Engine is the
-                AI side of that practice, where months of expert work become
-                days. AI Maestro is the broader version, for any process
-                bottlenecked on one person's judgment.
+                A consultant hands you a deck and wishes you luck. I build the
+                culture into how the company actually runs, the meetings, the
+                reviews, the hiring, the recognition, the daily decisions, so it
+                lives in the work instead of sitting in a binder. Then I build the
+                systems that keep it going, so your team sustains its own culture
+                long after I'm gone.
               </p>
               <p className="cp-why-pullout">
-                I take the practice in. I don't hand you a binder and leave.
+                My job is to inspire people into purpose-driven action, then leave
+                behind the systems that keep it alive without me.
               </p>
             </div>
             <div>
@@ -718,35 +714,17 @@ const CulturePractice = () => {
         </div>
       </section>
 
-      {/* J - ENGAGEMENT SHAPE */}
+      {/* J - HOW WE START */}
       <section className="cp-section cp-engage" id="engagement">
         <div className="cp-wrap">
-          <div className="cp-label">How an engagement starts</div>
-          <h2 className="cp-title">No pitch on day one. The work earns the proposal.</h2>
-          <p className="cp-sub">
-            Three meetings before anyone talks scope. It's how the right work
-            gets found instead of guessed at.
-          </p>
-          <div className="cp-engage-cards">
-            <div className="cp-eng-card">
-              <div className="cp-eng-step">Meeting 1 · Listening</div>
-              <h4>What's actually going on</h4>
-              <p>No pitch. No proposal. I want to understand the business and where the pain actually sits, in your words.</p>
-            </div>
-            <div className="cp-eng-card">
-              <div className="cp-eng-step">Meeting 2 · What I heard</div>
-              <h4>Make it specific</h4>
-              <p>I bring back what I heard, specific, in your language. Maybe a tease of what we'd do. Still no proposal.</p>
-            </div>
-            <div className="cp-eng-card">
-              <div className="cp-eng-step">Meeting 3 · The scope</div>
-              <h4>Outcome, not hours</h4>
-              <p>Only when there's enough to scope responsibly. Outcome-based. We negotiate on what's in, not on the rate.</p>
-            </div>
-          </div>
-          <p className="cp-engage-note">
-            Three rules that don't bend. No proposal until I understand the work.
-            No hourly pricing. No proposal without diagnosis.
+          <div className="cp-label">How we start</div>
+          <h2 className="cp-title">Wherever you're starting from.</h2>
+          <p className="cp-engage-lead">
+            There's no template. Every company is different, and every one is
+            starting from a different place. So the first thing I do is sit down
+            and listen to what's actually going on. From there we work out what
+            the work should be, and we align on it together before anything
+            starts. Wherever you are, that's where we begin.
           </p>
         </div>
       </section>

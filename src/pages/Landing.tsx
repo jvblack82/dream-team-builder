@@ -84,8 +84,8 @@ const css = `
   .land-btn.teal:hover { background: var(--teal-light); transform: translateY(-1px); }
   .land-btn.caramel { background: var(--caramel); color: #fff; }
   .land-btn.caramel:hover { background: var(--caramel-deep); transform: translateY(-1px); }
-  .land-btn.teal-outline { background: transparent; color: var(--teal); border: 1px solid var(--teal); }
-  .land-btn.teal-outline:hover { background: var(--teal); color: #fff; transform: translateY(-1px); }
+  .land-btn.white-outline { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.5); }
+  .land-btn.white-outline:hover { background: #fff; color: var(--dark); transform: translateY(-1px); }
 
   /* CREDIBILITY BAR */
   .land-cred {
@@ -197,7 +197,7 @@ const Landing = () => {
       {/* HERO */}
       <header className="land-hero">
         <div className="land-wrap land-hero-inner">
-          <span className="land-kicker">Dreamscope Consulting · Ho Chi Minh City</span>
+          <span className="land-kicker">Dreamscope Consulting</span>
           <h1>Two practices. One operator mindset.</h1>
           <p className="land-sub">
             Two parent practices. One operator who's spent 15 years building the
@@ -220,15 +220,15 @@ const Landing = () => {
         <div className="land-wrap">
           <div className="land-cred-grid">
             <div>
-              <span className="land-cred-num">9 yrs</span>
+              <span className="land-cred-num">15+ yrs</span>
               <span className="land-cred-label">
-                Scaling teams across Vietnam, Cambodia, India, Japan
+                Operating and building the systems that let companies scale
               </span>
             </div>
             <div>
-              <span className="land-cred-num">3,700</span>
+              <span className="land-cred-num">40+</span>
               <span className="land-cred-label">
-                Employees under the culture and ops build at Pizza 4P's
+                Pizza 4P's locations across 5 countries
               </span>
             </div>
             <div>
@@ -349,14 +349,14 @@ const Landing = () => {
             and whether either practice can help.
           </p>
           <div className="land-cta-btns">
-            <a className="land-btn teal" href="mailto:joe@dreamscope.win?subject=Dreamscope%20-%20Let's%20talk">
-              Book a conversation
-            </a>
-            <a className="land-btn teal-outline" href="https://discovery.dreamscope.win/culture">
+            <a className="land-btn teal" href="https://discovery.dreamscope.win/culture">
               Take the Culture discovery →
             </a>
             <a className="land-btn caramel" href="https://discovery.dreamscope.win/ai_maestro">
               Take the AI Maestro discovery →
+            </a>
+            <a className="land-btn white-outline" href="mailto:joe@dreamscope.win?subject=Dreamscope%20-%20Let's%20talk">
+              Book a conversation
             </a>
           </div>
           <div className="land-cta-email">

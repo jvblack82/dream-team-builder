@@ -386,6 +386,9 @@ const css = `
     transition: transform 0.2s, background 0.2s;
   }
   .cta-btn:hover { background: var(--teal-light); transform: translateY(-1px); }
+  .cta-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .cta-btn.outline { background: transparent; border: 1px solid rgba(255,255,255,0.4); }
+  .cta-btn.outline:hover { background: rgba(255,255,255,0.08); border-color: var(--teal-light); }
 
   .ds-footer {
     background: var(--dark);
@@ -527,16 +530,18 @@ const CultureEngine = () => {
                   Blind spots leadership can't see
                 </div>
                 <div className="pc-desc">
-                  290 employees flagged a supervisor crisis. 40 leaders mentioned
-                  it 5 times total. The system caught what humans missed.
+                  290 employees flagged a supervisor crisis that 40 leaders were
+                  nearly oblivious to. The system caught what humans missed.
                 </div>
               </div>
               <div className="problem-card">
                 <div className="pc-title">Surveys that go nowhere</div>
                 <div className="pc-desc">
-                  Most companies collect data and don't know what to do with it.
-                  We classify every response against 19 validated drivers, so you
-                  know exactly what to fix and where.
+                  Companies collect the data, then it stalls. Either they can't
+                  tell what it's really saying, or turning it into something they
+                  can act on takes so long the moment has passed. We classify
+                  every response against 19 validated drivers and synthesize it
+                  fast, so you can act while it still matters.
                 </div>
               </div>
               <div className="problem-card">
@@ -809,12 +814,17 @@ const CultureEngine = () => {
           30 minutes. No pitch. Just understanding what you're dealing with, and
           whether this can help.
         </p>
-        <a
-          href="mailto:joe@dreamscope.win?subject=Culture%20Engine%20-%20Let's%20talk"
-          className="cta-btn"
-        >
-          Email me to start →
-        </a>
+        <div className="cta-btns">
+          <a href="https://discovery.dreamscope.win/culture" className="cta-btn">
+            Take the culture discovery →
+          </a>
+          <a
+            href="mailto:joe@dreamscope.win?subject=Culture%20Engine%20-%20Let's%20talk"
+            className="cta-btn outline"
+          >
+            Email me to start →
+          </a>
+        </div>
       </section>
 
       {/* FOOTER */}
