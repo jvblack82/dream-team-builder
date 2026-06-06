@@ -8,6 +8,7 @@ import Landing from "./pages/Landing";
 import CulturePractice from "./pages/CulturePractice";
 import CultureEngine from "./pages/CultureEngine";
 import AIMaestro from "./pages/AIMaestro";
+import Brief from "./pages/Brief";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
             <Route path="/culture" element={<CulturePractice />} />
             <Route path="/culture-engine" element={<CultureEngine />} />
             <Route path="/ai-maestro" element={<AIMaestro />} />
+            <Route path="/brief" element={<Brief />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Route>
