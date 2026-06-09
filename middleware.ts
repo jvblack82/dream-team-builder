@@ -9,26 +9,24 @@ export const config = {
 const REALM = 'Betterworks';
 const COOKIE = 'bw_access';
 
-function unauthorized(pw?: string, token?: string): Response {
+function unauthorized(): Response {
   return new Response('Authentication required.', {
     status: 401,
     headers: {
       'WWW-Authenticate': `Basic realm="${REALM}", charset="UTF-8"`,
       'Cache-Control': 'no-store',
-      // TEMP DIAGNOSTIC (no secret leaked): does the runtime see the env vars?
-      'x-bw-pw-set': pw ? '1' : '0',
-      'x-bw-pw-len': String((pw || '').length),
-      'x-bw-token-set': token ? '1' : '0',
     },
   });
 }
 
 export default function middleware(request: Request): Response {
-  const PW = process.env.BETTERWORKS_PW;
-  const TOKEN = process.env.BETTERWORKS_TOKEN;
+  // Trim env values: a stray trailing newline/space (from CLI piping or a
+  // dashboard paste) would otherwise silently break every match.
+  const PW = process.env.BETTERWORKS_PW?.trim();
+  const TOKEN = process.env.BETTERWORKS_TOKEN?.trim();
 
   // Fail closed if the password env var is not configured.
-  if (!PW) return unauthorized(PW, TOKEN);
+  if (!PW) return unauthorized();
 
   const url = new URL(request.url);
 
@@ -61,12 +59,12 @@ export default function middleware(request: Request): Response {
     try {
       decoded = atob(auth.slice(6));
     } catch {
-      return unauthorized(PW, TOKEN);
+      return unauthorized();
     }
     const sep = decoded.indexOf(':');
     const pass = sep >= 0 ? decoded.slice(sep + 1) : '';
     if (pass === PW) return next();
   }
 
-  return unauthorized(PW, TOKEN);
+  return unauthorized();
 }
